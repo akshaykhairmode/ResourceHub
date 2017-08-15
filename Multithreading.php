@@ -1,5 +1,7 @@
 <?php  
-
+/*
+Akshay Khairmode
+*/
 class Multithreading
 {
 
