@@ -9,9 +9,21 @@ class Multithreading
 
     function do_in_background($url, $params, $ssl)
     {
+
+    	
+    	if($params === false){
+
+    		$params = array("NO_POST_DATA");
+    	}
+
+    	if (parse_url($url,PHP_URL_SCHEME) === NULL) { 
+		   	die("Please specify HTTP/HTTPS");
+		}
+
 	    $post_string = http_build_query($params);
 	    $parts = parse_url($url);
-            $errno = 0;
+        
+        $errno = 0;
 	    $errstr = "";
 
 	    if($ssl === true){
@@ -26,8 +38,9 @@ class Multithreading
 	   
 	    if(!$fp)
 	    {
-	        echo "Error while opening socket connection";    
+	        die ("Error while opening socket connection");    
 	    }
+
 	    $out = "POST ".$parts['path']." HTTP/1.1\r\n";
 	    $out.= "Host: ".$parts['host']."\r\n";
 	    $out.= "Content-Type: application/x-www-form-urlencoded\r\n";
