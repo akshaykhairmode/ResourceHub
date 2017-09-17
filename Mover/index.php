@@ -72,8 +72,8 @@ $version = new Version;
     <input type="text" class="form-control" id="folderName" name="folderName" placeholder="eg: my_backups" value="<?php echo (isset($_POST['folderName'])) ? $_POST['folderName'] : '' ; ?>">
   </div>
   <div class="form-group">
-    <label for="content">Execution Location</label>
-    <input type="text" class="form-control" id="folder" name="folder" placeholder="Folder relative path" value="<?php echo (isset($_POST['folder'])) ? $_POST['folder'] : '' ; ?>">
+    <label for="content">Execution Location<b class="text-info"> Path can be relative or absolute. Eg: C:/xampp/htdocs , ../ etc</b></label>
+    <input type="text" class="form-control" id="folder" name="folder" placeholder="Folder path" value="<?php echo (isset($_POST['folder'])) ? $_POST['folder'] : '' ; ?>">
   </div>
 <button type="submit" class="btn btn-danger" name="submitForm" id="submitForm">Start Mover</button>
 <button type="button" class="btn btn-primary" name="showFiles" id="showFiles">Get a list of matching files</button><br><br>
