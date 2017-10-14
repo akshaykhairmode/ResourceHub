@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="row col-md-6">
 			<div class="panel panel-default">
-		     <div class="panel-heading">Execute Script in background</div>
+		     <div class="panel-heading">Execute Script</div>
 			  <div class="panel-body">
 			  	<form method="POST" name="socketui_submit" accept-charset="utf-8">
 				  
