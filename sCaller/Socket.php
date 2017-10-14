@@ -22,7 +22,7 @@ class Socket
 
 
     	if (parse_url($url,PHP_URL_SCHEME) === NULL) { 
-		   	die("Please specify HTTP/HTTPS");
+		   	die("Please specify HTTP/HTTPS in URL");
 		}
 
 	    $parts = parse_url($url);
@@ -53,6 +53,7 @@ class Socket
 	    if (isset($post_string)) $out.= $post_string;
 	    fwrite($fp, $out);
 	    fclose($fp);
+	    return "Script Executed Successfully";
   }
 
   function do_in_foreground($url, $params, $ssl,$bytes_to_read = 128)
@@ -68,7 +69,7 @@ class Socket
     	}
 
     	if (parse_url($url,PHP_URL_SCHEME) === NULL) { 
-		   	die("Please specify HTTP/HTTPS");
+		   	die("Please specify HTTP/HTTPS in URL");
 		}
 
 	    $parts = parse_url($url);
