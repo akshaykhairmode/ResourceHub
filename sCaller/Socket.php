@@ -100,9 +100,10 @@ class Socket
 	    if (isset($post_string)) $out.= $post_string;
 	    fwrite($fp, $out);
 	     while (!feof($fp)) {
-	        echo fgets($fp, $bytes_to_read);
+	        $content .= fgets($fp, $bytes_to_read);
 	    }
 	    fclose($fp);
+	    return $content;
   }
 }
 ?>
