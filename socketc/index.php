@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Socket Caller</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -15,7 +16,7 @@
 </style>
 <body style="margin-top: 20px;">
 	<div class="container">
-		<div class="row col-md-6">
+		<div class="row col-md-6 col-md-offset-3">
 			<div class="panel panel-default">
 		     <div class="panel-heading">Execute Script</div>
 			  <div class="panel-body">
@@ -36,8 +37,8 @@
 				  </div>
 
 					<div class="form-group">
-					    <label for="data">Data to send (Comma Seperated):</label>
-					    <input type="text" class="form-control" id="data" name="data">
+					    <label for="data">Data to send (Comma Seperated) or JSON Object:</label>
+					    <input type="text" class="form-control" id="data" name="data" placeholder="test1,test2,test3 or {'first':'test1','second':'test2','third':'test3'}">
 				  	</div>
 
 				  	<div class="checkbox-inline">
@@ -51,9 +52,26 @@
 				</form>
 				<div id="messageDiv" class="text-info"></div>
 			  </div>
+			  <div class="text-center" style="padding-bottom: 10px;"><!-- Footer -->
+			  <a class="btn btn-social-icon btn-twitter" href="https://twitter.com/KhairmodeAkshay" target="_blank">
+			    <span class="fa fa-twitter"></span>
+			  </a>
+			  <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/akshaykhairmode" target="_blank">
+			    <span class="fa fa-facebook"></span>
+			  </a>
+			  <a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/akshay-khairmode-95633471" target="_blank">
+			    <span class="fa fa-linkedin"></span>
+			  </a>
+			  <a class="btn btn-social-icon btn-github" href="https://github.com/akshaykhairmode" target="_blank">
+			    <span class="fa fa-github"></span>
+			  </a>
+			  <a class="btn btn-social-icon btn-google" href="https://plus.google.com/+akshaykhairmode" target="_blank">
+			    <span class="fa fa-google"></span>
+			  </a>
+			</div>
 			</div>
 		</div>
-		<div class="row col-md-12">
+		<div class="row col-md-6 col-md-offset-3">
 			<?php 
 				if(isset($_POST['submitURL'])){
 
@@ -69,7 +87,19 @@
 
 
 					if(isset($_POST['data'])){
-						$params = explode(",", $_POST['data']);
+
+						$json_data = $_POST['data'];
+
+						if($json_data[0] == "{" or $json_data[0] == "[" ){
+
+							$params = json_decode($json_data,true);
+
+						}else{
+
+							$params = explode(",", $json_data);
+
+						}
+
 					}else{
 						$params = false;
 					}
@@ -95,6 +125,7 @@
 	</div>
 	<script type="text/javascript">
 		function validate(){
+			// var post_data = $("#data").val();
 			$("#messageDiv").html("");
 			var url = $("#url").val();
 			if(url.startsWith("http") === true){
